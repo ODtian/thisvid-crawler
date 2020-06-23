@@ -139,7 +139,7 @@ def start_loop(loop):
     def loop_runner():
         loop.run_forever()
 
-    loop_thread = Thread(target=loop_runner)
+    loop_thread = Thread(target=loop_runner, daemon=True)
     loop_thread.start()
     return loop_thread
 
