@@ -1,0 +1,4 @@
+httpx
+pyexecjs
+uvloop
+lxml
