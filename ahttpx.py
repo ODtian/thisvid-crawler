@@ -1,4 +1,5 @@
 from httpx import AsyncClient
+from httpx._config import DEFAULT_TIMEOUT_CONFIG
 
 
 async def request(
@@ -12,7 +13,7 @@ async def request(
     headers=None,
     cookies=None,
     auth=None,
-    timeout=None,
+    timeout=DEFAULT_TIMEOUT_CONFIG,
     allow_redirects=True,
     verify=True,
     cert=None,
@@ -47,7 +48,7 @@ async def get(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=None,
+    timeout=DEFAULT_TIMEOUT_CONFIG,
     trust_env=True,
     proxies=None,
     stream=False
@@ -78,7 +79,7 @@ async def options(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=None,
+    timeout=DEFAULT_TIMEOUT_CONFIG,
     trust_env=True,
     proxies=None,
     stream=False
@@ -109,7 +110,7 @@ async def head(
     allow_redirects=False,
     cert=None,
     verify=True,
-    timeout=None,
+    timeout=DEFAULT_TIMEOUT_CONFIG,
     trust_env=True,
     proxies=None,
     stream=False
@@ -143,7 +144,7 @@ async def post(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=None,
+    timeout=DEFAULT_TIMEOUT_CONFIG,
     trust_env=True,
     proxies=None,
     stream=False
@@ -180,7 +181,7 @@ async def put(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=None,
+    timeout=DEFAULT_TIMEOUT_CONFIG,
     trust_env=True,
     proxies=None,
     stream=False
@@ -217,7 +218,7 @@ async def patch(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=None,
+    timeout=DEFAULT_TIMEOUT_CONFIG,
     trust_env=True,
     proxies=None,
     stream=False
@@ -251,7 +252,7 @@ async def delete(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=None,
+    timeout=DEFAULT_TIMEOUT_CONFIG,
     trust_env=True,
     proxies=None,
     stream=False
