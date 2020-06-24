@@ -77,8 +77,8 @@ async def get_video_url(task):
         import traceback
 
         print(
-            "[ERROR] Error occurred when fetching video {}"
-            "--- Traceback Start ---"
+            "[ERROR] Error occurred when fetching page {}\n"
+            "--- Traceback Start ---\n"
             "{}"
             "--- Traceback End ---".format(video_url, traceback.format_exc())
         )
