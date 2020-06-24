@@ -26,7 +26,14 @@ async def crawl_page(url):
         html = r.text
         tree = lxml.html.fromstring(html)
     except Exception as e:
-        print("[ERROR] Error occurred when fetching page {}: {}".format(url, str(e)))
+        import traceback
+
+        print(
+            "[ERROR] Error occurred when fetching page {}\n"
+            "--- Traceback Start ---\n"
+            "{}"
+            "--- Traceback End ---".format(url, traceback.format_exc())
+        )
         raise e
     else:
         return [
@@ -67,10 +74,13 @@ async def get_video_url(task):
         print("[ERROR] No video found: {}".format(video_url))
         raise e
     except Exception as e:
+        import traceback
+
         print(
-            "[ERROR] Error occurred when fetching video {}: {}".format(
-                video_url, str(e)
-            )
+            "[ERROR] Error occurred when fetching video {}"
+            "--- Traceback Start ---"
+            "{}"
+            "--- Traceback End ---".format(video_url, traceback.format_exc())
         )
         raise e
     else:
@@ -130,8 +140,12 @@ async def excutor(task):
 async def task_pusher():
     for page in pages:
         url = page_url.format(page=page)
-        result = await crawl_page(url)
-        [put_task(r) for r in result]
+        try:
+            result = await crawl_page(url)
+        except Exception:
+            pages.append(page)
+        else:
+            [put_task(r) for r in result]
     now["finished"] = True
 
 
@@ -199,3 +213,19 @@ finally:
             if item:
                 url, name = item
                 f.write("{}\n    out={}\n".format(url, name))
+
+
+def iter_lines(f):
+    while True:
+        line = f.readline()
+        if line:
+            yield line
+        else:
+            break
+
+
+with open("./downloads_nhentai_sorted.txt", "w") as f:
+    with open("./downloads_nhentai.txt", "r") as f2:
+        f.writelines(
+            sorted(iter_lines(f2), key=lambda line: int(line[:-2]), reverse=True)
+        )
