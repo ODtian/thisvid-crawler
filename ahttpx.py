@@ -13,7 +13,7 @@ async def request(
     headers=None,
     cookies=None,
     auth=None,
-    timeout=DEFAULT_TIMEOUT_CONFIG,
+    timeout=None,
     allow_redirects=True,
     verify=True,
     cert=None,
@@ -48,7 +48,7 @@ async def get(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=DEFAULT_TIMEOUT_CONFIG,
+    timeout=None,
     trust_env=True,
     proxies=None,
     stream=False
@@ -79,7 +79,7 @@ async def options(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=DEFAULT_TIMEOUT_CONFIG,
+    timeout=None,
     trust_env=True,
     proxies=None,
     stream=False
@@ -110,7 +110,7 @@ async def head(
     allow_redirects=False,
     cert=None,
     verify=True,
-    timeout=DEFAULT_TIMEOUT_CONFIG,
+    timeout=None,
     trust_env=True,
     proxies=None,
     stream=False
@@ -144,7 +144,7 @@ async def post(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=DEFAULT_TIMEOUT_CONFIG,
+    timeout=None,
     trust_env=True,
     proxies=None,
     stream=False
@@ -181,7 +181,7 @@ async def put(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=DEFAULT_TIMEOUT_CONFIG,
+    timeout=None,
     trust_env=True,
     proxies=None,
     stream=False
@@ -218,7 +218,7 @@ async def patch(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=DEFAULT_TIMEOUT_CONFIG,
+    timeout=None,
     trust_env=True,
     proxies=None,
     stream=False
@@ -252,7 +252,7 @@ async def delete(
     allow_redirects=True,
     cert=None,
     verify=True,
-    timeout=DEFAULT_TIMEOUT_CONFIG,
+    timeout=None,
     trust_env=True,
     proxies=None,
     stream=False
