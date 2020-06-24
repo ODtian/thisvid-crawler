@@ -207,7 +207,7 @@ except Exception as e:
     print("\nOops! Error occurred, will save finished.")
     print(e)
 finally:
-    loop.stop()
+    loop.call_soon_threadsafe(loop.stop)
     with open("./downloads.txt", "w") as f:
         for item in set(videos):
             if item:
@@ -215,17 +215,17 @@ finally:
                 f.write("{}\n    out={}\n".format(url, name))
 
 
-def iter_lines(f):
-    while True:
-        line = f.readline()
-        if line:
-            yield line
-        else:
-            break
+# def iter_lines(f):
+#     while True:
+#         line = f.readline()
+#         if line:
+#             yield line
+#         else:
+#             break
 
 
-with open("./downloads_nhentai_sorted.txt", "w") as f:
-    with open("./downloads_nhentai.txt", "r") as f2:
-        f.writelines(
-            sorted(iter_lines(f2), key=lambda line: int(line[:-2]), reverse=True)
-        )
+# with open("./downloads_nhentai_sorted.txt", "w") as f:
+#     with open("./downloads_nhentai.txt", "r") as f2:
+#         f.writelines(
+#             sorted(iter_lines(f2), key=lambda line: int(line[:-2]), reverse=True)
+#         )
